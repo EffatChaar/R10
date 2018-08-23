@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Faves from './Faves'
+import FavesContext from '../../context/FavesContext'
 
 export default class FavesContainer extends Component {
   static navigationOptions = {
@@ -7,7 +8,13 @@ export default class FavesContainer extends Component {
   }
   render() {
     return (
-      <Faves />
+      <FavesContext.Consumer>
+        {values => {
+          console.log(values)
+          return <Faves />
+        }
+        }
+      </FavesContext.Consumer>
     )
   }
 }

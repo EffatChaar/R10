@@ -1,5 +1,5 @@
 import React from 'react'
-import { createBottomTabNavigator, createStackNavigator } from 'react-navigation'
+import { Platform, createBottomTabNavigator, createStackNavigator } from 'react-navigation'
 import Schedule from '../screens/Schedule'
 import Map from '../screens/Map'
 import Faves from '../screens/Faves'
