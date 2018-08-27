@@ -99,7 +99,7 @@ export default createBottomTabNavigator (
                 fontFamily: 'Montserrat'
             },
             style: {
-                backgroundColor: "black"
+                backgroundColor: 'black'
             }
         }
     }

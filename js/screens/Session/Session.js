@@ -2,6 +2,7 @@ import React from 'react'
 import { Platform, Text, View, TouchableOpacity, Image } from 'react-native'
 import moment from 'moment'
 import Icon from 'react-native-vector-icons/Ionicons'
+import styles from './styles'
 
 
 

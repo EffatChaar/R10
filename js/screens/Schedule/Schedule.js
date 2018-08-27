@@ -2,11 +2,12 @@ import React from 'react'
 import { Platform, Text, View, SectionList, TouchableOpacity } from 'react-native'
 import moment from 'moment'
 import Icon from 'react-native-vector-icons/Ionicons'
+import styles from './styles'
 
 
 const Schedule = ({ sessions, navigation, favesIds }) => {
     return (
-        <View>
+        <View style={styles.container}>
             <SectionList
                 renderItem = {({item, index}) => (
                     <TouchableOpacity
@@ -14,9 +15,9 @@ const Schedule = ({ sessions, navigation, favesIds }) => {
                     onPress={() => {
                        navigation.navigate('Session', {sessionId: item.id})
                     }}>
-                    <View key={index}>
+                    <View style={styles.session} key={index}>
                         <Text>{item.title}</Text>
-                        <Text>{item.location}</Text>
+                        <Text style={styles.location}>{item.location}</Text>
                         {!favesIds.includes(item.id) ? (
                             <Text />
                         ) : (
@@ -27,6 +28,7 @@ const Schedule = ({ sessions, navigation, favesIds }) => {
                                     })}
                                 color= '#ff0000'
                                 size= {22}
+                                style={styles.icon}
                             />
                         )}
                     </View>
@@ -34,7 +36,7 @@ const Schedule = ({ sessions, navigation, favesIds }) => {
                 )
             }
             renderSectionHeader={({ section: { title} }) =>
-                ( <Text>{moment(title).format('hh:mm A')}</Text>)   
+                ( <Text style={styles.header}>{moment(title).format('hh:mm A')}</Text>)   
             }
             sections= {sessions}
             keyExtractor={(item, index) => item + index}
