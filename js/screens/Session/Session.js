@@ -13,8 +13,8 @@ console.log('something')
     const existFaves = allFaves.includes(data.Session.id)
 
     return (
-        <View>
-            <Text>{data.Session.location}</Text>
+        <View style={styles.container}>
+            <Text style={styles.lightColorText}>{data.Session.location}</Text>
             {!existFaves ? (
                 <Text />
             ) : (
@@ -23,30 +23,31 @@ console.log('something')
                             ios: 'ios-heart',
                             android: 'md-heart'
                         })}
-                    color= '#ff0000'
-                    size= {22}
+                    color= '#cf392a'
+                    size= {18}
+                    style={styles.icon}
                 />
             )}
-            <Text>{data.Session.title}</Text>
-            <Text>{moment(new Date(data.Session.startTime)).format('hh:mm A')}</Text>
-            <Text>{data.Session.description}</Text>
+            <Text style={styles.title}>{data.Session.title}</Text>
+            <Text style={styles.time}>{moment(new Date(data.Session.startTime)).format('hh:mm A')}</Text>
+            <Text style={styles.texts}>{data.Session.description}</Text>
             {!data.Session.speaker ? (
                 <Text />
             ) : (
                 <View>
-                    <Text>Presented by:</Text>
+                    <Text style={styles.lightColorText}>Presented by:</Text>
                     <TouchableOpacity
                         onPress= {() => { navigation.navigate('Speaker', {speakerId: data.Session.speaker.id}) }}>
-                        <View>
+                        <View style={styles.speaker}>
                         {!data.Session.speaker.image ? (
                             <Text />
                         ) : (
                             <Image
-                                style={{ width: 50, height: 50 }}
+                                style={styles.speakerImage}
                                 source={{ uri: data.Session.speaker.image }}
                         />
                         )}
-                            <Text>{data.Session.speaker.name}</Text>
+                            <Text style={styles.speakerName}>{data.Session.speaker.name}</Text>
                         </View>
                     </TouchableOpacity>
                 </View>

@@ -26,7 +26,7 @@ const Schedule = ({ sessions, navigation, favesIds }) => {
                                         ios: 'ios-heart',
                                         android: 'md-heart'
                                     })}
-                                color= '#ff0000'
+                                color= '#cf392a'
                                 size= {22}
                                 style={styles.icon}
                             />
