@@ -12,7 +12,7 @@ const About = ({ aboutData }) => {
                         R10 is a conference that focuses on just about any topic related to dev.
                     </Text>
                     <Text>
-                        Date and Venue
+                        Date & Venue
                     </Text>
                     <Text>
                         The R10 conference will take place on September 18, 2018 in Vancouver, BC.

@@ -3,6 +3,7 @@ import Schedule from './Schedule'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 import { Text,View } from 'react-native'
+import FavesContext from '../../context/FavesContext'
 
 const scheduleData = gql`
    {
@@ -21,7 +22,6 @@ export default class ScheduleContainer extends Component {
   }
   
   render() {
-  console.log("OLOLOLO",this.props.navigation)
     return (
       <Query
         query= { scheduleData } >
@@ -31,15 +31,24 @@ export default class ScheduleContainer extends Component {
           
             let sessions = allSessions.reduce((acc, curr) => {
               const timeExists = acc.find(section => section.title === curr.startTime)
-                timeExists ? timeExists.data.push(curr)
-                : acc.push({ title: curr.startTime, data: [curr] })
-                return acc
+              timeExists ? timeExists.data.push(curr)
+              : acc.push({ title: curr.startTime, data: [curr] })
+              return acc
               }, []).sort((a, b) => a.title - b.title)
               return (
-                  <Schedule
-                  sessions={sessions}
-                  navigation={this.props.navigation}
-                   />
+                <FavesContext.Consumer>
+                  { values => {
+                    const ArrayFavesIds = []
+                    values.favesIds.map( item => ArrayFavesIds.push(item.id))
+                    return (
+                      <Schedule
+                        navigation= {this.props.navigation}
+                        sessions= {sessions}
+                        favesIds= {ArrayFavesIds}
+                      />
+                    )
+                  }}
+              </FavesContext.Consumer>
               )
             }}
       </Query>

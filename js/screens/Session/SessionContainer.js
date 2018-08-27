@@ -10,7 +10,6 @@ export default class SessionContainer extends Component {
     render() {
     const { navigation } = this.props
     const sessionId = navigation.getParam('sessionId')
-    console.log('SESSIONID',sessionId)
 
       return (
           <Query
@@ -38,7 +37,14 @@ export default class SessionContainer extends Component {
                 return (
                     <FavesContext.Consumer>
                         { values => {
-                            return <Session data={data} navigation={navigation} context={values} />
+                            return (
+                            <Session   
+                                data={data} 
+                                navigation={navigation}
+                                favesIds={values}
+                                sessionId={sessionId}
+                            />
+                        )
                         }}
                     </FavesContext.Consumer>
                 )

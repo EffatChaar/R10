@@ -1,11 +1,12 @@
 import React from 'react'
-import { Text, View, ScrollView, Linking, TouchableOpacity } from 'react-native'
+import { Text, View, ScrollView, Linking, TouchableOpacity, Image } from 'react-native'
+import Icon from 'react-native-vector-icons/Ionicons'
 
 const Speaker = ({ data, navigation }) => {
     return (
         <ScrollView>
             <View>
-                <Ionicons
+                <Icon
                     name="ios-close"
                     size={35}
                     color='#000'
@@ -14,7 +15,9 @@ const Speaker = ({ data, navigation }) => {
                 <Text>About The Speaker</Text>
             </View>
             <View>
-                <Image source={{uri: data.Speaker.image}} />
+                <Image 
+                    source={{uri: data.Speaker.image}}
+                    style={{ width: 50, height: 50 }} />
                 <Text>{data.Speaker.name}</Text>
                 <Text>{data.Speaker.bio}</Text>
             </View>

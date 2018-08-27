@@ -5,10 +5,10 @@ import Icon from 'react-native-vector-icons/Ionicons'
 
 
 
-const Session = ({ data, navigation, context }) => {
-
+const Session = ({ data, navigation, favesIds }) => {
+console.log('something')
     const allFaves = []
-    context.favesIds.map( item => allFaves.push(item.id))
+    favesIds.favesIds.map( item => allFaves.push(item.id))
     const existFaves = allFaves.includes(data.Session.id)
 
     return (
@@ -22,31 +22,53 @@ const Session = ({ data, navigation, context }) => {
                             ios: 'ios-heart',
                             android: 'md-heart'
                         })}
-                    size= {20}
                     color= '#ff0000'
+                    size= {22}
                 />
             )}
             <Text>{data.Session.title}</Text>
             <Text>{moment(new Date(data.Session.startTime)).format('hh:mm A')}</Text>
             <Text>{data.Session.description}</Text>
-            <Text>Presented by:</Text>
-            <TouchableOpacity
-                onPress= {() => navigation.navigate('Speaker', {speakerId: data.Session.speaker.id}) }>
+            {!data.Session.speaker ? (
+                <Text />
+            ) : (
                 <View>
-                    <Image
-                        style={{ width: 50, height: 50 }}
-                        source={{ uri: data.Session.speaker.image }}
-                        /> 
-                    <Text>{data.Session.speaker.name}</Text>
+                    <Text>Presented by:</Text>
+                    <TouchableOpacity
+                        onPress= {() => { navigation.navigate('Speaker', {speakerId: data.Session.speaker.id}) }}>
+                        <View>
+                        {!data.Session.speaker.image ? (
+                            <Text />
+                        ) : (
+                            <Image
+                                style={{ width: 50, height: 50 }}
+                                source={{ uri: data.Session.speaker.image }}
+                        />
+                        )}
+                            <Text>{data.Session.speaker.name}</Text>
+                        </View>
+                    </TouchableOpacity>
                 </View>
-            </TouchableOpacity>
-            <TouchableOpacity
-                onPress={() => {!existFaves ? context.addFav(data.Session.id) : context.removeFav(data.Session.id);
-                }}
-            >
-            { !existFaves ? <Text>Add To Favs</Text> : <Text> Remove From Faves</Text>}    
-            </TouchableOpacity>
+            )}
+            <View>
+                {!existFaves ? (
+                    <TouchableOpacity
+                        onPress={() => {favesIds.addFav(data.Session.id)
+                        }}
+                    >
+                    <Text>Add To Faves</Text>    
+                    </TouchableOpacity>
+                    ) : (
+                    <TouchableOpacity
+                        onPress={() => {favesIds.removeFav(data.Session.id);
+                        }}
+                    >
+                    <Text>Remove from Favs</Text>
+                </TouchableOpacity>
+            )}
+            </View>
         </View>
+        
     )
 }
 
