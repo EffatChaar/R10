@@ -40,6 +40,11 @@ const styles = StyleSheet.create({
     },
     speakerName: {
         alignSelf: 'center'
+    },
+    button: {
+        alignSelf: 'center',
+        paddingTop: 30,
+        paddingBottom: 20
     }
 })
 

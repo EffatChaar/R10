@@ -1,34 +1,40 @@
 import React from 'react'
-import { Text, View, ScrollView, Linking, TouchableOpacity, Image } from 'react-native'
+import { Platform, Text, View, ScrollView, Linking, TouchableOpacity, Image } from 'react-native'
 import Icon from 'react-native-vector-icons/Ionicons'
+import styles from './styles'
+
 
 const Speaker = ({ data, navigation }) => {
     return (
-        <ScrollView>
-            <View>
-                <Icon
-                    name="ios-close"
-                    size={35}
-                    color='#000'
-                    onPress={() => navigation.pop()}
-                />
-                <Text>About The Speaker</Text>
+        <View style={styles.container}>
+            <Icon
+                name= {Platform.select({
+                    ios: 'ios-close',
+                    android: 'md-close'
+                })}
+                size= {32}
+                color= '#ffffff'
+                onPress= {() => navigation.pop()}
+                style={styles.backIcon}
+            />
+            <Text style={styles.aboutPart}>About The Speaker</Text>
+            <View style={styles.speakerPart}>
+                <View>
+                    <Image 
+                        source={{uri: data.Speaker.image}}
+                        style={styles.image} />
+                    <Text style={styles.speakerName}>{data.Speaker.name}</Text>
+                    <Text style={styles.textStyle}>{data.Speaker.bio}</Text>
+                </View>
+                <TouchableOpacity
+                    onPress={() => {
+                    Linking.openURL(`https://en.wikipedia.org/wiki/${data.Speaker.name}`);
+                        }}
+                    >
+                    <Text style={styles.botton}>Read More On Wikipedia</Text>
+                </TouchableOpacity>
             </View>
-            <View>
-                <Image 
-                    source={{uri: data.Speaker.image}}
-                    style={{ width: 50, height: 50 }} />
-                <Text>{data.Speaker.name}</Text>
-                <Text>{data.Speaker.bio}</Text>
-            </View>
-            <TouchableOpacity
-                onPress={() => {
-                Linking.openURL(`https://en.wikipedia.org/wiki/${data.Speaker.name}`);
-                    }}
-                >
-                <Text>Read More On Wikipedia</Text>
-            </TouchableOpacity>
-        </ScrollView>
+        </View>
     )
 }
 

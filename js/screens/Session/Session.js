@@ -58,14 +58,14 @@ console.log('something')
                         onPress={() => {favesIds.addFav(data.Session.id)
                         }}
                     >
-                    <Text>Add To Faves</Text>    
+                    <Text style={styles.button}>Add To Faves</Text>    
                     </TouchableOpacity>
                     ) : (
                     <TouchableOpacity
                         onPress={() => {favesIds.removeFav(data.Session.id);
                         }}
                     >
-                    <Text>Remove from Favs</Text>
+                    <Text style={styles.button}>Remove from Favs</Text>
                 </TouchableOpacity>
             )}
             </View>
