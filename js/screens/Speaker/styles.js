@@ -8,17 +8,21 @@ const styles = StyleSheet.create({
     speakerPart: {
         backgroundColor: '#ffffff',
         marginLeft: 10,
-        marginRight: 10
+        marginRight: 10,
+        borderRadius: 10
+    },
+    aboutHeader: {
+        display: 'flex',
+        flexDirection: 'row',
+        paddingVertical: 40
     },
     aboutPart: {
-        alignSelf: 'center',
         color: '#ffffff',
-        fontSize: 20,
-        paddingBottom: 40
+        fontSize: 20
     },
     backIcon: {
-        marginTop: 60,
-        marginLeft: 15
+        marginLeft: 15,
+        flex: 0.55
     },
     image: {
         alignSelf: 'center',

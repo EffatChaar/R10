@@ -7,17 +7,19 @@ import styles from './styles'
 const Speaker = ({ data, navigation }) => {
     return (
         <View style={styles.container}>
-            <Icon
-                name= {Platform.select({
-                    ios: 'ios-close',
-                    android: 'md-close'
-                })}
-                size= {32}
-                color= '#ffffff'
-                onPress= {() => navigation.pop()}
-                style={styles.backIcon}
-            />
-            <Text style={styles.aboutPart}>About The Speaker</Text>
+            <View style={styles.aboutHeader}>
+                <Icon
+                    name= {Platform.select({
+                        ios: 'ios-close',
+                        android: 'md-close'
+                    })}
+                    size= {32}
+                    color= '#ffffff'
+                    onPress= {() => navigation.pop()}
+                    style={styles.backIcon}
+                />
+                <Text style={styles.aboutPart}>About The Speaker</Text>
+            </View>
             <View style={styles.speakerPart}>
                 <View>
                     <Image 
