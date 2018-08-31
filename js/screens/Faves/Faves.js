@@ -3,6 +3,7 @@ import { Platform, Text, View, ScrollView, SectionList, TouchableOpacity } from 
 import Icon from 'react-native-vector-icons/Ionicons'
 import moment from 'moment'
 import styles from './styles'
+import stylesGlobal from '../../config/styles'
 
 const Faves = ({ sessions, navigation, favesIds }) => {
     return (
@@ -14,9 +15,9 @@ const Faves = ({ sessions, navigation, favesIds }) => {
                     onPress= {() => {
                        navigation.navigate('Session', {sessionId: item.id})
                     }}>
-                    <View style={styles.session} key= {index}>
-                        <Text>{item.title}</Text>
-                        <Text style={styles.location}>{item.location}</Text>
+                    <View style={[ styles.session, stylesGlobal.globalFont ]} key= {index}>
+                        <Text style={[ stylesGlobal.globalFont ]}>{item.title}</Text>
+                        <Text style={[ styles.location, stylesGlobal.globalFont ]}>{item.location}</Text>
                         {!favesIds.includes(item.id) ? (
                             <Text />
                         ) : (
@@ -35,7 +36,7 @@ const Faves = ({ sessions, navigation, favesIds }) => {
                     </TouchableOpacity>
                 )}
                 renderSectionHeader={({ section: { title} }) =>
-                    ( <Text style={styles.header}>{moment(title).format('hh:mm A')}</Text>)}
+                    ( <Text style={[ styles.header, stylesGlobal.globalFont ]}>{moment(title).format('hh:mm A')}</Text>)}
                 sections= {sessions}
                 keyExtractor= { (item, index) => item + index}
             />

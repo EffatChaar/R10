@@ -5,8 +5,7 @@ const styles = StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        margin: 15,
-        fontFamily: 'Montserrat'
+        margin: 15
     },
     logo: {
         alignSelf: 'center',
@@ -18,8 +17,8 @@ const styles = StyleSheet.create({
         marginBottom: 15
     },
     heading: {
-        fontWeight: 'bold',
-        fontSize: 20
+        fontWeight: '800',
+        fontSize: 22
     },
     allTexts: {
         fontSize: 16,
@@ -30,7 +29,7 @@ const styles = StyleSheet.create({
         color: '#9963ea',
         paddingTop: 15,
         paddingBottom: 15,
-        fontWeight: 'bold'
+        fontWeight: '800'
     }
 
 })

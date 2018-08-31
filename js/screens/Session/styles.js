@@ -30,7 +30,8 @@ const styles = StyleSheet.create({
         paddingTop: 15,
         paddingBottom: 15,
         borderBottomColor: '#C5C6C5',
-        borderBottomWidth: 1
+        borderBottomWidth: 1,
+        marginBottom: 15
     },
     speakerImage: {
         borderRadius: 25,
@@ -42,9 +43,16 @@ const styles = StyleSheet.create({
         alignSelf: 'center'
     },
     button: {
-        alignSelf: 'center',
-        paddingTop: 30,
-        paddingBottom: 20
+        paddingVertical: 20,
+        color: '#ffffff',
+        fontSize: 16
+    },
+    linearGradient: {
+        width: 200,
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        borderRadius: 50,
+        alignItems: 'center'
     }
 })
 

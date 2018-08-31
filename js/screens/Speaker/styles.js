@@ -46,10 +46,20 @@ const styles = StyleSheet.create({
         lineHeight: 22,
         fontSize: 16  
     },
-    botton: {
-        alignSelf: 'center',
-        paddingTop: 15,
-        paddingBottom: 20
+    button: {
+        color: '#ffffff',
+        fontSize: 16,
+        paddingVertical: 20
+    },
+    linearGradient: {
+        width: 'auto',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        borderRadius: 50,
+        alignItems: 'center',
+        paddingLeft: 10,
+        paddingRight: 10,
+        marginBottom: 20
     }
 
 })
